@@ -9,6 +9,14 @@ const KEY = 'scit:v1:progress';
 const $ = (selector, base = document) => base.querySelector(selector);
 const $$ = (selector, base = document) => [...base.querySelectorAll(selector)];
 const esc = (s = '') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// Deterministic answer ordering prevents a predictable answer position while keeping selections stable across reloads.
+const shuffled = (key,n) => {
+  let seed=2166136261;
+  for (const ch of key) seed=Math.imul(seed^ch.charCodeAt(0),16777619)>>>0;
+  const a=Array.from({length:n},(_,i)=>i);
+  for(let i=n-1;i>0;i--){seed=(Math.imul(seed,1664525)+1013904223)>>>0;const j=seed%(i+1);[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+};
 let state;
 try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { state = {}; }
 if (!state || typeof state !== 'object') state = {};
@@ -118,7 +126,7 @@ function labHTML(m,r) {
   const message = simPicked === null ? '' : `<div class="feedback ${simCorrect?'good':'bad'}"><strong>${simCorrect?'Correct diagnosis.':'Not the best next step.'}</strong> ${simCorrect ? esc(s.why) : 'Review the symptoms and try again. Use the safest evidence-based action.'}</div>`;
   interactive=`<div class="lab-stage-top"><span class="lab-count">DECISION ${idx+1} OF 3</span><span class="pill gray">${esc(m.category)}</span></div>
   <p class="lab-prompt">${esc(s.prompt)}</p>
-  <div class="option-grid">${s.options.map((o,i)=>`<button type="button" class="option ${simPicked === i ? (simCorrect?'correct':'wrong'):''}" ${simCorrect?'disabled':''} data-action="lab-choice" data-choice="${i}">${esc(o)}</button>`).join('')}</div>
+  <div class="option-grid">${shuffled(m.id+":lab:"+idx,3).map(i=>`<button type="button" class="option ${simPicked === i ? (simCorrect?'correct':'wrong'):''}" ${simCorrect?'disabled':''} data-action="lab-choice" data-choice="${i}">${esc(s.options[i])}</button>`).join('')}</div>
   ${message}
   ${simCorrect ? `<div class="lab-navigation"><button class="button button-primary button-small" data-action="next-lab">${idx===2?'Complete simulation':'Next decision'} →</button></div>` : ''}`;
  }
@@ -140,7 +148,7 @@ function quizHTML(m,r) {
  <form id="quiz-form" novalidate>
   ${m.quiz.map((q,qi)=> `<fieldset class="quiz-question" style="border:0;border-bottom:1px solid var(--line);padding:16px 0;margin:0">
     <legend>${qi+1}. ${esc(q.prompt)}</legend>
-    ${q.options.map((opt,oi)=>`<label class="quiz-choice"><input type="radio" name="q${qi}" value="${oi}" ${Number(checked[qi])===oi && checked[qi]!==undefined?'checked':''} ${typeof r.score==='number'?'disabled':''}><span>${esc(opt)}</span></label>`).join('')}
+    ${shuffled(m.id+":quiz:"+qi,3).map(oi=>`<label class="quiz-choice"><input type="radio" name="q${qi}" value="${oi}" ${Number(checked[qi])===oi && checked[qi]!==undefined?'checked':''} ${typeof r.score==='number'?'disabled':''}><span>${esc(q.options[oi])}</span></label>`).join('')}
     ${typeof r.score==='number' ? `<div class="quiz-answer">${Number(checked[qi])===q.correct?'✓ Correct.':'✕ Review.'} ${esc(q.why)}</div>`:''}
    </fieldset>`).join('')}
   ${typeof r.score==='number' ?
