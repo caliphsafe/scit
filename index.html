@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b181f">
+  <meta name="description" content="SCIT by 43Dou: a video-first, hands-on IT refresher course for the Southcoast Health Personal Computer Technician interview.">
+  <meta property="og:title" content="SCIT | 43Dou IT Training Lab">
+  <meta property="og:description" content="14-day personal computer technician refresher, with video lessons, interactive support tickets and knowledge checks.">
+  <title>SCIT | 43Dou IT Training Lab</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="course.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#workspace">Skip to course</a>
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="SCIT home">
+      <span class="brand-mark" aria-hidden="true"><span>S</span><i></i></span>
+      <span class="brand-word"><strong>SCIT<span class="brand-dot">.</span></strong><small>43DOU / TRAINING LAB</small></span>
+    </a>
+    <div class="topbar-right">
+      <span class="eyebrow-tag">PERSONAL COMPUTER TECHNICIAN PREP</span>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="course-sidebar" aria-expanded="false">Modules <span aria-hidden="true">☰</span></button>
+      <span class="avatar" aria-label="Independent learning workspace">43</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="course-sidebar" aria-label="Curriculum navigation">
+      <div class="sidebar-top">
+        <p class="tiny-label">YOUR WORKSPACE <span>01 / 14</span></p>
+        <h2>Interview readiness,<br><em>built by doing.</em></h2>
+        <div class="overall-progress"><div class="overall-row"><span>Course progress</span><strong id="sidebar-progress">0%</strong></div><div class="progress-track"><span id="sidebar-progress-bar"></span></div><p id="sidebar-complete">0 of 14 lessons completed</p></div>
+      </div>
+      <div class="lesson-filters" role="group" aria-label="Filter lessons">
+        <button type="button" class="filter active" data-filter="all">All</button>
+        <button type="button" class="filter" data-filter="remaining">To do</button>
+        <button type="button" class="filter" data-filter="completed">Done</button>
+      </div>
+      <div id="module-nav" class="module-nav" aria-label="Modules"></div>
+      <div class="sidebar-foot"><p><span class="status-dot"></span>Progress saves to this browser</p><button type="button" id="reset-progress" class="text-button">Reset my progress</button></div>
+    </aside>
+
+    <main id="workspace" class="workspace" tabindex="-1">
+      <div id="view" aria-live="polite"></div>
+      <footer class="footer"><div><strong>SCIT</strong> / A 43Dou independent learning project</div><p>Training scenarios are fictional. Not affiliated with Southcoast Health. Use only your own devices or an authorized practice lab.</p></footer>
+    </main>
+  </div>
+</div>
+<dialog id="reset-dialog" class="confirm-dialog">
+  <form method="dialog">
+    <p class="tiny-label">RESET WORKSPACE</p>
+    <h2>Erase your saved progress?</h2>
+    <p>This clears completed lessons, quiz scores, practice checklists, and notes from this browser. This cannot be undone.</p>
+    <div class="dialog-actions"><button value="cancel" class="button button-outline">Cancel</button><button value="confirm" class="button button-danger">Erase progress</button></div>
+  </form>
+</dialog>
+<noscript><div class="noscript">SCIT uses JavaScript for interactive lessons and tests. Please enable JavaScript to start training.</div></noscript>
+</body>
+</html>
