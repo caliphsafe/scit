@@ -1,4 +1,4 @@
-/* SCIT curriculum. Fictional training scenarios. Verified video links and official documentation. */
+/* SCIT curriculum with sourced videos, readings and fictional support labs. */
 window.SCIT_COURSE = [
   {
     "id": "triage",
@@ -8,13 +8,17 @@ window.SCIT_COURSE = [
     "mins": 45,
     "level": "Re-entry",
     "summary": "Recover your LogMeIn troubleshooting method and apply clinical-impact prioritization.",
-    "video": "h7XwFtM938I",
-    "videoTitle": "Help desk hands-on series",
+    "video": "_tsPN5ZqEBQ",
+    "videoTitle": "Troubleshooting real-life help desk tickets",
     "channel": "Kevtech IT Support",
     "reading": [
       [
         "Southcoast job expectations",
         "https://southcoasthealthcareers.org/job/2811/personal-computer-technician-information-technology-us-ma-new-bedford-101-page-st/"
+      ],
+      [
+        "Incident management priorities",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/incident-management-process.html"
       ]
     ],
     "notes": [
@@ -564,8 +568,8 @@ window.SCIT_COURSE = [
     "mins": 65,
     "level": "Priority",
     "summary": "Work through practical account lockout and GPO troubleshooting decisions.",
-    "video": "h7XwFtM938I",
-    "videoTitle": "Hands-on Windows domain support playlist",
+    "video": "EA0ZnH4Rhm0",
+    "videoTitle": "Common Active Directory issues, commands and offline PCs",
     "channel": "Kevtech IT Support",
     "reading": [
       [
@@ -575,6 +579,10 @@ window.SCIT_COURSE = [
       [
         "Group Policy overview",
         "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview"
+      ],
+      [
+        "Account unlock demo (YouTube)",
+        "https://www.youtube.com/watch?v=UnWi79OfTS4"
       ]
     ],
     "notes": [
@@ -1412,13 +1420,17 @@ window.SCIT_COURSE = [
     "mins": 55,
     "level": "Refresh",
     "summary": "Support the devices that make a workstation functional beyond Windows.",
-    "video": "IhcZqUs1IF8",
-    "videoTitle": "Operating systems overview, A+ 220-1202",
+    "video": "_BhO_nYod0o",
+    "videoTitle": "Troubleshooting printers, A+ 220-1201",
     "channel": "Professor Messer",
     "reading": [
       [
         "A+ mobile device and hardware training",
         "https://www.professormesser.com/free-a-plus-training/220-1201/220-1201-video/220-1201-training-course/"
+      ],
+      [
+        "Mobile device troubleshooting video",
+        "https://www.youtube.com/watch?v=huQwiY4kiko"
       ]
     ],
     "notes": [
